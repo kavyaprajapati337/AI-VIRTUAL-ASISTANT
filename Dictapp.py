@@ -65,7 +65,7 @@ def open_appweb(query):
         query = query.replace("jarvis", "")
         query = query.replace("Launch", "")
         query = query.replace(" ", "")
-        webbrowser.open(f"https://www.{query}")  # Fixed: removed extra WWW
+        webbrowser.open(f"http://www.{query}")  # Fixed: removed extra WWW
     else:
         keys = list(dictapp.keys())
         for app in keys:
