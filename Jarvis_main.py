@@ -6,7 +6,7 @@ import bs4 as BeautifulSoup
 import pyautogui
 import os
 import keyboard
-#import mouse
+import mouse
 import random
 import webbrowser
 
@@ -262,7 +262,7 @@ if __name__ == "__main__":
                     speak("Thank you for using me, sir. Have a great day!")
                     exit()
                 
-                '''elif "remember that" in query:
+                elif "remember that" in query:
                     rememberMessage = query.replace("remember that","")
                     rememberMessage = query.replace("Jarvis","")
                     speak("you told me"+rememberMessage)
@@ -270,14 +270,13 @@ if __name__ == "__main__":
                     remember.write(rememberMessage)
                     remember.close()
                 elif "what do ypu remember" in query:
-                    remember.open("Remember.txt","r")
-                    speak("you told me" + remember.read()) 
-
+                    with open("Remember.txt", "r") as remember:
+                        speak("you told me" + remember.read()) 
                 elif "shutdown system" in query:
                     speak("are you sure you want to shutdown your system")
                     shutdown= input("do you whish to shutdown your computer? (yes/no)") 
-                if shutdown==Yes:
+                if shutdown.lower() == "yes":
                     os.system("shutdown /s /t 1")
                 
-                elif shutdown == No:
-                    break'''
+                elif shutdown.lower() == "no":
+                    break
