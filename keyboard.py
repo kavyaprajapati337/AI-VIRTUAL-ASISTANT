@@ -64,3 +64,58 @@ def scroll_down():
         keyboard.release(Key.down)
         sleep(0.1)
 
+#bluetooth turn on and off
+def bluetooth_on():
+    keyboard.press(Key.media_bluetooth)
+    keyboard.release(Key.media_bluetooth)
+    sleep(0.1)
+
+def bluetooth_off():
+    keyboard.press(Key.media_bluetooth)
+    keyboard.release(Key.media_bluetooth)
+    sleep(0.1)
+
+#wifi turn on and off
+def wifi_on():
+    keyboard.press(Key.media_wifi)
+    keyboard.release(Key.media_wifi)
+    sleep(0.1)
+
+def wifi_off():
+    keyboard.press(Key.media_wifi)
+    keyboard.release(Key.media_wifi)
+    sleep(0.1)
+
+#hotspot turn on and off
+def hotspot_on():
+    keyboard.press(Key.media_hotspot)
+    keyboard.release(Key.media_hotspot)
+    sleep(0.1)
+
+def hotspot_off():
+    keyboard.press(Key.media_hotspot)
+    keyboard.release(Key.media_hotspot)
+    sleep(0.1)
+
+#brightness increase and decrease at specific number tel by user
+def brightness_control(level):
+    if level > 0:
+        for _ in range(level):
+            keyboard.press(Key.media_brightness_up)
+            keyboard.release(Key.media_brightness_up)
+            sleep(0.1)
+    elif level < 0:
+        for _ in range(-level):
+            keyboard.press(Key.media_brightness_down)
+            keyboard.release(Key.media_brightness_down)
+            sleep(0.1)
+
+# screen cast and project
+def screen_cast():
+    keyboard.press(Key.media_projection)
+    keyboard.release(Key.media_projection)
+    sleep(0.1)
+def project():
+    keyboard.press(Key.media_projection)
+    keyboard.release(Key.media_projection)
+    sleep(0.1)
