@@ -60,9 +60,9 @@ dictapp = {"commandPrompt":"cmd",                    #cmd
 # Function to open applications or websites based on voice commands
 def open_appweb(query):
     speak("Launching sir....")
-    if ".com" in query or ".in" in query or ".org" in query:
+    if ".com" in query or ".in" in query or ".org" in query or " " in query:
         query = query.replace("open", "")
-        query = query.replace("jarvis", "")
+        query = query.replace("Buddy", "")
         query = query.replace("Launch", "")
         query = query.replace(" ", "")
         webbrowser.open(f"http://www.{query}")  # Fixed: removed extra WWW

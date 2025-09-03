@@ -24,7 +24,7 @@ def latestnews():
     url = None
     speak("which feild news do you want, [breaking news], [entertainment], [health], [science], [sports]")
     field = input ("type the feild name that you want:")
-    for key,value in api_dict.items():
+    for key,value in apidict.items():
         if key.lower() in field.lower():
             url = value
             print(url)

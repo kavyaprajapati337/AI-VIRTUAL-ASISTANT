@@ -35,7 +35,7 @@ def take_command():
 # Function to search Google, YouTube, and Wikipedia
 def search_google(query):
     if "google" in query:
-        query = query.replace("jarvis", "")
+        query = query.replace("Buddy", "")
         query = query.replace("google search", "")
         query = query.replace("google", "")
         query = query.strip()
@@ -53,7 +53,7 @@ def search_google(query):
 def searchyoutube(query):
     if "youtube" in query:
         speak("This is what I found on YouTube")
-        query = query.replace("jarvis", "")
+        query = query.replace("Buddy", "")
         query = query.replace("youtube search", "")
         query = query.replace("youtube", "")
         query = query.strip()
@@ -67,7 +67,7 @@ def searchyoutube(query):
 def search_wikipedia(query):  # Fixed: was "searchwikipedia"
     if "wikipedia" in query:
         speak("This is what I found on Wikipedia")
-        query = query.replace("jarvis", "")
+        query = query.replace("Buddy", "")
         query = query.replace("wikipedia search", "")
         query = query.replace("wikipedia", "")
         query = query.strip()

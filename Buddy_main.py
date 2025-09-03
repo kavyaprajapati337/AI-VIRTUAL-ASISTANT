@@ -213,7 +213,7 @@ if __name__ == "__main__":
                     from Calculator import WolfRamAlpha
                     from Calculator import Cal
                     query = query.replace("calculate","")
-                    query = query.replace("jarvis","")
+                    query = query.replace("Buddy","")
                     Cal(query)
 
                 elif "whatsapp" in query:
@@ -264,7 +264,7 @@ if __name__ == "__main__":
                 
                 elif "remember that" in query:
                     rememberMessage = query.replace("remember that","")
-                    rememberMessage = query.replace("Jarvis","")
+                    rememberMessage = query.replace("Buddy","")
                     speak("you told me"+rememberMessage)
                     open("Remember.txt", "w")
                     remember.write(rememberMessage)

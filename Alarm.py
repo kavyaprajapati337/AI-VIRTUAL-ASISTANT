@@ -25,7 +25,7 @@ deletetime.close()
 # Function to ring the alarm at the specified time
 def ring (time):
     timeset= str(time)
-    timenow =timeset.replace("Jarvis", "")
+    timenow =timeset.replace("Buddy", "")
     timenow = timenow.replace("alarm", "")
     timenow = timenow.replace("set an alarm", "")
     timenow = timenow.replace(" and ", ":")
