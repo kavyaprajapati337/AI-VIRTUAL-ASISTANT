@@ -145,6 +145,44 @@ if __name__ == "__main__":
                     speak("Scrolling down")
                     scroll_down()
 
+                # Windows shortcut commands
+                elif "screenshot" in query:
+                    from win_shotcut import screenshot
+                    speak("Taking screenshot")
+                    screenshot()
+                elif "open task manager" in query:
+                    from win_shotcut import taskmanager
+                    speak("Opening Task Manager")
+                    taskmanager()
+                elif "open settings" in query:
+                    from win_shotcut import settings
+                    speak("Opening Settings")
+                    settings()
+                elif "open file explorer" in query:
+                    from win_shotcut import fileexplorer
+                    speak("Opening File Explorer")
+                    fileexplorer()
+                elif "open run dialog" in query:
+                    from win_shotcut import rundialog
+                    speak("Opening Run Dialog")
+                    rundialog()
+                elif "select all" in query:
+                    from win_shotcut import select_all
+                    speak("Selecting all")
+                    select_all()
+                elif "copy" in query:
+                    from win_shotcut import copy
+                    speak("Copying")
+                    copy()
+                elif "paste" in query:
+                    from win_shotcut import paste
+                    speak("Pasting")
+                    paste()
+                elif "cut" in query:    
+                    from win_shotcut import cut
+                    speak("Cutting")
+                    cut()
+
                 # Mouse control commands
                 elif "move left" in query:
                     from mouse import move_left

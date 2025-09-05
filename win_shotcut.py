@@ -56,4 +56,32 @@ def windows_shortcuts():
     keyboard.release(Key.r)
     keyboard.release(Key.cmd)
 
-    # open 
+    # select all files and folders
+    keyboard.press(Key.ctrl)
+    keyboard.press('a')
+    keyboard.release('a')
+    keyboard.release(Key.ctrl)
+    sleep(1)
+
+    # Copy selected files and folders
+    keyboard.press(Key.ctrl)
+    keyboard.press('c')
+    keyboard.release('c')
+    keyboard.release(Key.ctrl)
+    sleep(1)
+
+    # Paste copied files and folders
+    keyboard.press(Key.ctrl)
+    keyboard.press('v')
+    keyboard.release('v')
+    keyboard.release(Key.ctrl)  
+    sleep(1)
+
+    # Cut selected files and folders
+    keyboard.press(Key.ctrl)
+    keyboard.press('x')
+    keyboard.release('x')
+    keyboard.release(Key.ctrl)      
+    sleep(1)
+
+    

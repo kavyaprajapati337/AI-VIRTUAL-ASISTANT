@@ -54,7 +54,8 @@ dictapp = {"commandPrompt":"cmd",                    #cmd
            "davenci resolve":"davinci resolve",      #davinci resolve
            "gitdesktop":"git desktop",               #git desktop
            "xampp":"xampp control panel",            #xampp control panel
-           "xbox":"xbox game bar",                   #xbox game bar
+           "xbox":"xbox game bar",
+           "re":"recycle bin",                        #recycle bin
            }
 
 # Function to open applications or websites based on voice commands
