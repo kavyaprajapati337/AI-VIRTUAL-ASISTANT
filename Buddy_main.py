@@ -144,6 +144,44 @@ if __name__ == "__main__":
                     from keyboard import scroll_down
                     speak("Scrolling down")
                     scroll_down()
+                elif "project" in query:
+                    from keyboard import project
+                    speak("Opening project menu")
+                    project()
+                elif "delete" in query:
+                    from keyboard import delete_key
+                    speak("Deleting")
+                    delete_key()
+                
+                #browser functions
+                elif "web" in query:
+                    from browser_functions import web_functions
+                    web_functions(query)
+                elif "browser control" in query:
+                    from browser_functions import browser_control
+                    browser_control(query)
+                elif "switch window" in query:
+                    pyautogui.hotkey("alt", "tab")
+                elif "task view" in query:
+                    pyautogui.hotkey("win", "tab")
+                elif "minimize window" in query:
+                    pyautogui.hotkey("win", "down")
+                elif "maximize window" in query:
+                    pyautogui.hotkey("win", "up")
+                elif "close window" in query:
+                    pyautogui.hotkey("alt", "f4")
+                elif "open new window" in query:
+                    pyautogui.hotkey("ctrl", "n")
+                elif "open new incognito window" in query:
+                    pyautogui.hotkey("ctrl", "shift", "n")
+                elif "refresh" in query:
+                    pyautogui.hotkey("ctrl", "r")
+                elif "home" in query:
+                    pyautogui.hotkey("alt", "home")
+                elif "back" in query:
+                    pyautogui.hotkey("alt", "left")
+                elif "forward" in query:
+                    pyautogui.hotkey("alt", "right")
 
                 # Windows shortcut commands
                 elif "screenshot" in query:
@@ -257,6 +295,17 @@ if __name__ == "__main__":
                 elif "whatsapp" in query:
                     from Whatsapp import SendMessage
                     SendMessage()
+
+                #file_saved commands
+                elif "save file" in query:
+                    from File_saved import save_file
+                    save_file()
+                elif "close notepad" in query:
+                    from File_saved import close_notepad
+                    close_notepad()
+                elif "close word" in query:
+                    from File_saved import file_saved
+                    
 
                 # search any city temperature
                 elif "temperature" in query:

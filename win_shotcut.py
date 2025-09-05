@@ -11,13 +11,13 @@ def windows_shortcuts():
     keyboard.press(Key.space)
     keyboard.release(Key.space)
     keyboard.release(Key.cmd)
-
+    
     sleep(1)
 
     # Take a screenshot
     keyboard.press(Key.print_screen)
     keyboard.release(Key.print_screen)
-
+    
     sleep(1)
 
     # Open Task Manager
@@ -27,6 +27,7 @@ def windows_shortcuts():
     keyboard.release(Key.escape)
     keyboard.release(Key.shift)
     keyboard.release(Key.ctrl)
+    sleep(1)
 
     # Open Settings
     keyboard.press(Key.ctrl)
@@ -35,6 +36,7 @@ def windows_shortcuts():
     keyboard.release(Key.s)
     keyboard.release(Key.shift)
     keyboard.release(Key.ctrl)
+    sleep(1)
 
     # Open File Explorer
     keyboard.press(Key.ctrl)
@@ -43,18 +45,21 @@ def windows_shortcuts():
     keyboard.release(Key.e)
     keyboard.release(Key.shift)
     keyboard.release(Key.ctrl)
+    sleep(1)
 
     # Open Run Dialog cmd
     keyboard.press(Key.cmd)
     keyboard.press(Key.r)
     keyboard.release(Key.r)
     keyboard.release(Key.cmd)
+    sleep(1)
 
     # Open Run Dialog
     keyboard.press(Key.cmd)
     keyboard.press(Key.r)
     keyboard.release(Key.r)
     keyboard.release(Key.cmd)
+    sleep(1)
 
     # select all files and folders
     keyboard.press(Key.ctrl)
@@ -83,5 +88,3 @@ def windows_shortcuts():
     keyboard.release('x')
     keyboard.release(Key.ctrl)      
     sleep(1)
-
-    

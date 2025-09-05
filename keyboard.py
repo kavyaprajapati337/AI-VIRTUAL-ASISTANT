@@ -119,3 +119,9 @@ def project():
     keyboard.press(Key.media_projection)
     keyboard.release(Key.media_projection)
     sleep(0.1)
+
+# delete key press
+def delete_key():
+    keyboard.press(Key.delete)
+    keyboard.release(Key.delete)
+    sleep(0.1)
