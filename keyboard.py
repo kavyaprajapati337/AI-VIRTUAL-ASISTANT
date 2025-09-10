@@ -125,3 +125,13 @@ def delete_key():
     keyboard.press(Key.delete)
     keyboard.release(Key.delete)
     sleep(0.1)
+
+# software switching (Alt + Tab)
+def switch_software():
+    keyboard.press(Key.alt)
+    keyboard.press(Key.tab)
+    sleep(0.1)
+    keyboard.release(Key.tab)
+    keyboard.release(Key.alt)
+    sleep(0.1)
+
