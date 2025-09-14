@@ -48,56 +48,6 @@ def take_command():
         return "None"
     return query
 
-# ---------- Load JSON Intents ----------
-with open("claude-code-tools.json", "r") as f:
-    intents = json.load(f)
-
-# ---------- Load Knowledge TXT ----------
-with open("claude-code-system-prompt.txt", "r") as f:
-    knowledge_base = f.readlines()
-knowledge_base1 = [line.strip() for line in knowledge_base if line.strip()]
-with open("gemini-2.5-pro.txt", "r") as f:
-    knowledge_base = f.readlines()
-knowledge_base2 = [line.strip() for line in knowledge_base if line.strip()]
-with open("gpt-5.txt", "r") as f:
-    knowledge_base = f.readlines()
-knowledge_base3 = [line.strip() for line in knowledge_base if line.strip()]
-
-# ---------- Response Function ----------
-def get_response(user_input):
-    user_input = user_input.lower()
-
-    # 1. Match with JSON intents
-    for intent in intents["claude-code-system-prompt"]:
-        for pattern in intent["patterns"]:
-            if pattern in user_input:
-                return random.choice(intent["responses"])
-
-    # 2. Match with TXT knowledge base (simple keyword search)
-    for line in knowledge_base:
-        if any(word in user_input for word in line.lower().split()):
-            return line
-    for line in knowledge_base2:
-        if any(word in user_input for word in line.lower().split()):
-            return line
-    for line in knowledge_base3:
-        if any(word in user_input for word in line.lower().split()):
-            return line
-
-    # 3. Fallback response
-    return "Sorry, I don’t have information on that."
-
-# ---------- Example Conversation Loop ----------
-if __name__ == "__main__":
-    print("AI Assistant: Hello! (type 'quit' to exit)")
-    while True:
-        user_input = input("You: ")
-        if user_input.lower() in ["quit", "exit"]:
-            print("AI Assistant: Goodbye!")
-            break
-        response = get_response(user_input)
-        print("AI Assistant:", response)
-
 # Function to set an alarm
 def alarm(query):
     timehere = open("Alarmtext.txt", "a")
