@@ -1,11 +1,18 @@
 import webbrowser
-import os
 import pyautogui
-from time import sleep
 from speak import speak
-from pynput.keyboard import Key, Controller
+from pynput.keyboard import Controller
 keyboard = Controller()
-from Dictapp import dictapp
+import pyttsx3
+
+engine = pyttsx3.init("sapi5")  # Fixed: was "ngine"
+voices = engine.getProperty("voices")
+engine.setProperty("voice", voices[0].id)  # Set to the first voice
+engine.setProperty("rate", 170)  # Set speech rate
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
 
 # Function to open applications or websites based on voice commands
 def web_functions(query):

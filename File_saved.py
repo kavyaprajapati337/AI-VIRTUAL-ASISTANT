@@ -21,9 +21,11 @@ engine = pyttsx3.init("sapi5")
 voices = engine.getProperty("voices")
 engine.setProperty("voice", voices[0].id)  # Set to the first voice
 engine.setProperty("rate", 170)  # Set speech rate
+
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
+
 def file_saved():
     try:
         speak("Where do you want to save the file sir?")

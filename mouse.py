@@ -1,8 +1,20 @@
+import pyttsx3
+import os
+
 from pynput.mouse import Button,Controller
 
 from time import sleep
 
 mouse = Controller()
+
+engine = pyttsx3.init("sapi5")  # Fixed: was "ngine"
+voices = engine.getProperty("voices")
+engine.setProperty("voice", voices[0].id)  # Set to the first voice
+engine.setProperty("rate", 170)  # Set speech rate
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
 
 # Function to simulate mouse movements and clicks
 def move_left():

@@ -1,22 +1,17 @@
-import datetime
+from datetime import datetime
+from logging import shutdown
+from speak import speak
 import pyttsx3
 import speech_recognition as sr
 import requests
-import bs4 as BeautifulSoup
+from bs4 import BeautifulSoup
 import pyautogui
 import os
-import keyboard
-import mouse
 import random
-import webbrowser
-import json
-
-#for i in range(3):
- #   a= input("enter password to open jarvis:")
-  #  pw_file = open ("Password.txt", "r")
-   # pw = pw_file.read()
-    #pw_file.close()
-    
+import GreetMe
+import speak
+import task
+import webbrowser    
 
 # Initialize the text-to-speech engine
 engine = pyttsx3.init("sapi5")
@@ -55,17 +50,38 @@ def alarm(query):
     timehere.close()
     os.startfile("Alarm.py")
 
-# Main function to run the assistant
+
 if __name__ == "__main__":
     while True:
-        query = take_command().lower()
-        if "Hi buddy" in query:  # Fixed: was "weak up"
-            from GreetMe import greetme  # Fixed: was "greetme"
+        q = take_command()
+        if not q or q == "None":
+            continue
+        query = q.lower().strip()
+        if "hi buddy" in query or "hello buddy" in query or "wake up" in query:
+            from GreetMe import greetme
             greetme()
 
             # Main loop for listening to commands
             while True:
-                query = take_command().lower()
+                try:
+                    q = take_command()
+                    if not q or q == "None":
+                        continue
+                    query = q.lower().strip()
+
+                    # Exit condition to break the loop
+                    if "go to sleep" in query:
+                        speak("Going to sleep. Say 'Hi Buddy' to wake me up.")
+                        break
+
+                    # ... (rest of your existing command handlers unchanged) ...
+
+                except Exception as e:
+                    import traceback
+                    print("Error in command loop:", e)
+                    traceback.print_exc()
+                    speak("I encountered an error. Check console for details.")
+
                 # Exit condition to break the loop
                 if "go to sleep" in query:
                     speak("Ok sir, You can call me anytime.")
@@ -84,7 +100,18 @@ if __name__ == "__main__":
                 elif "what is your age" in query:
                     speak("I am just a program, I don't have an age like humans do.")
 
-                elif "tired" in query:
+                elif "tired gujarati" in query:
+                    speak("playing your favourit song")
+                    a=(1,2,3)
+                    b= random.choice(a)
+                    if b==1:
+                        webbrowser.open("https://www.youtube.com/watch?v=xC1cj9zhh6k")
+                    elif b==2:
+                        webbrowser.open("")
+                    elif b==3:
+                        webbrowser.open("")
+                    
+                elif "tired hindi" in query:
                     speak("playing your favourit song")
                     a=(1,2,3)
                     b= random.choice(a)
@@ -184,7 +211,7 @@ if __name__ == "__main__":
                 elif "forward" in query:
                     pyautogui.hotkey("alt", "right")
 
-                # Windows shortcut commands
+                # Windows speak commands
                 elif "screenshot" in query:
                     from win_shotcut import screenshot
                     speak("Taking screenshot")
@@ -272,6 +299,7 @@ if __name__ == "__main__":
                     from Dictapp import closeappweb  # Fixed: was "close_appweb"
                     closeappweb(query)
 
+                # Search commands
                 elif "google" in query:
                     from SearchNow import search_google
                     search_google(query)
@@ -292,7 +320,8 @@ if __name__ == "__main__":
                     query = query.replace("calculate","")
                     query = query.replace("Buddy","")
                     Cal(query)
-
+                
+                # WhatsApp message command
                 elif "whatsapp" in query:
                     from Whatsapp import SendMessage
                     SendMessage()
@@ -345,27 +374,193 @@ if __name__ == "__main__":
                     strTime = datetime.datetime.now().strftime("%H:%M")
                     speak(f"sir the time is: {strTime}")
 
+                #code_writing commands
+                elif "code" in query:
+                    from task import code
+                    code()
+                elif "compile" in query:
+                    from task import compile
+                    compile()
+                elif "run" in query:
+                    from task import run
+                    run()
+                elif "execute" in query:
+                    from task import execute
+                    execute()
+                elif "debug" in query:
+                    from task import debug
+                    debug()
+                elif "find" in query:
+                    from task import find
+                    find()
+                elif "replace" in query:
+                    from task import replace
+                    replace()
+                elif "comment" in query:
+                    from task import comment
+                    comment()
+                elif "uncomment" in query:
+                    from task import uncomment
+                    uncomment()
+                elif "save" in query:
+                    from task import save
+                    save()
+                elif "open folder" in query:
+                    from task import open_folder
+                    open_folder()
+                elif "new file" in query:
+                    from task import new_file
+                    new_file()
+                elif "new window" in query:
+                    from task import new_window
+                    new_window()
+                elif "close file" in query:
+                    from task import close_file
+                    close_file()
+                elif "close window" in query:
+                    from task import close_window
+                    close_window()
+                elif "cut line" in query:
+                    from task import cut_line
+                    cut_line()
+                elif "copy line" in query:
+                    from task import copy_line
+                    copy_line()
+                elif "paste line" in query:
+                    from task import paste_line
+                    paste_line()
+                elif "select all" in query:
+                    from task import select_all
+                    select_all()
+                elif "undo" in query:
+                    from task import undo
+                    undo()
+                elif "redo" in query:
+                    from task import redo
+                    redo()
+                elif "find" in query:
+                    from task import find
+                    find()
+                elif "replace" in query:
+                    from task import replace
+                    replace()
+                elif "go to line" in query:
+                    from task import go_to_line
+                    go_to_line()
+                elif "comment line" in query:
+                    from task import comment_line
+                    comment_line()
+                elif "uncomment line" in query:
+                    from task import uncomment_line
+                    uncomment_line()
+                elif "indent line" in query:
+                    from task import indent_line
+                    indent_line()
+                elif "outdent line" in query:
+                    from task import outdent_line
+                    outdent_line()
+                elif "run code" in query:
+                    from task import run_code
+                    run_code()
+                elif "debug code" in query:
+                    from task import debug_code
+                    debug_code()
+                elif "open terminal" in query:
+                    from task import open_terminal
+                    open_terminal()
+                elif "close terminal" in query:
+                    from task import close_terminal
+                    close_terminal()
+                elif "open command prompt" in query:
+                    from task import open_cmd
+                    open_cmd()
+                elif "close command prompt" in query:
+                    from task import close_cmd
+                    close_cmd()
+                elif "open camera" in query:
+                    from task import open_camera
+                    open_camera()
+                elif "play music" in query:
+                    from task import play_music
+                    play_music()
+                elif "send email" in query:
+                    from task import sendEmail
+                    try:
+                        speak("What should I say?")
+                        content = take_command()
+                        speak("To whom should I send it?")
+                        to = take_command()
+                        sendEmail(to, content)
+                    except Exception as e:
+                        print(e)
+                        speak("Sorry, I could not send the email.")
+                elif "search wikipedia" in query:
+                    from task import search_wikipedia
+                    search_wikipedia(query)
+                elif "open youtube" in query:
+                    from task import open_website
+                    open_website("youtube.com")
+                elif "open google" in query:
+                    from task import open_website
+                    open_website("google.com")
+                elif "open stack overflow" in query:
+                    from task import open_website
+                    open_website("stackoverflow.com")
+                elif "play music" in query:
+                    from task import play_music
+                    play_music()
+                elif "the time" in query:
+                    from task import strTime
+                    strTime = datetime.datetime.now().strftime("%H:%M:%S")
+                    speak(f"Sir, the time is {strTime}")
+                elif "open command prompt" in query or "open cmd" in query:
+                    from task import open_cmd
+                    open_cmd()
+                elif "open camera" in query:
+                    from task import open_camera
+                    open_camera()
+                elif "send email" in query:
+                    from task import sendEmail
+                    try:
+                        speak("What should I say?")
+                        content = take_command()
+                        speak("To whom should I send it?")
+                        to = take_command()
+                        sendEmail(to, content)
+                    except Exception as e:
+                        print(e)
+                        speak("Sorry, I could not send the email.")
+                elif "stop" in query or "exit" in query:
+                    speak("Goodbye!")
+                    break
+                
+
                 # Exit commands    
                 elif "good bye" in query:  # Fixed: was "good by"
                     speak("Thank you for using me, sir. Have a great day!")
                     exit()
                 
                 elif "remember that" in query:
-                    rememberMessage = query.replace("remember that","")
-                    rememberMessage = query.replace("Buddy","")
-                    speak("you told me"+rememberMessage)
-                    open("Remember.txt", "w")
-                    remember.write(rememberMessage)
-                    remember.close()
-                elif "what do ypu remember" in query:
-                    with open("Remember.txt", "r") as remember:
-                        speak("you told me" + remember.read()) 
+                    rememberMessage = query.replace("remember that", "").replace("buddy", "").strip()
+                    speak("I will remember: " + rememberMessage)
+                    with open("Remember.txt", "w", encoding="utf-8") as remember:
+                        remember.write(rememberMessage)
+                elif "what do you remember" in query or "what do u remember" in query:
+                    try:
+                        with open("Remember.txt", "r", encoding="utf-8") as remember:
+                            data = remember.read().strip()
+                        if data:
+                            speak("You told me: " + data)
+                        else:
+                            speak("You haven't told me anything to remember.")
+                    except FileNotFoundError:
+                        speak("I don't have any memory saved yet.")
+
                 elif "shutdown system" in query:
-                    speak("are you sure you want to shutdown your system")
-                    shutdown= input("do you whish to shutdown your computer? (yes/no)") 
-                if shutdown.lower() == "yes":
+                    speak("Are you sure you want to shutdown your system? (yes/no)")
+                    answer = input("Do you wish to shutdown your computer? (yes/no): ").strip().lower()
+                if answer == "yes":
+                    speak("Shutting down now.")
                     os.system("shutdown /s /t 1")
-                
-                elif shutdown.lower() == "no":
-                    break
-                
+                else:
+                    speak("Shutdown cancelled.")
